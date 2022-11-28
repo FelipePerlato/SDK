@@ -1,0 +1,80 @@
+@model SistemaConsultas.Models.Agenda
+<html>
+    <head>
+                           
+    </head>
+    <body>
+
+<div class="container p-5">
+        <div class="border border-light rounded p-5 shadow formularios">
+            <h6>Agendamento de Consulta</h6>
+            </hr>
+            
+            <form asp-controller="Agenda" asp-action="salvarAgendamento" class="formLogin">
+                <div class="form-group">
+                    <input asp-for="data" id="calendarioAgenda" type="date" placeholder="    /    /    " class="inputCadastro form-control form-control-sm"/>
+                </div>
+                <div class="form-group">
+                    <input asp-for="hora" type="text" placeholder="   :   " class="inputCadastro form-control form-control-sm"/>
+                </div>
+                <select asp-for="especialidade" id="especialidade" class="inputCadastro form-control form-control-sm" onchange="javascript:atualiza();">
+                    <option>ESPECIALIDADE</option>
+                    
+                    @foreach (var item in Model.especialidades)
+                    {
+                        <option>@Html.DisplayFor(modelItem => item.nome)</option>
+                    }
+                </select>
+                <script>
+                    
+                </script>
+
+                <div class="form-group">
+                    <select asp-for="profissional" id="profissional" class="inputCadastro form-control form-control-sm">
+                        <option>PROFISSIONAL</option>
+                        @foreach (var item in Model.profissionais)
+                        {
+                            <option>@Html.DisplayFor(modelItem => item.nome)</option>
+                        }
+                        
+                    </select>
+                
+                </div>
+                <script>
+                    
+                </script>
+                <div class="form-group">
+                    <select asp-for="paciente" class="inputCadastro form-control form-control-sm">
+                        <option>PACIENTE</option>
+                        
+                        @foreach (var item in Model.pacientes)
+                        {
+                            <option>@Html.DisplayFor(modelItem => item.nome)</option>
+                        }
+                    </select>
+                </div>
+                
+
+
+                <div class="container">
+                    <div class="row">
+                        <div class="col-6">
+                            <input type="submit" value="GRAVAR" class="btn btnForm btn-sm btn-outline-info"/>
+                        </div>
+                        <div class="pl-1 col-6">
+                            <a asp-area="" asp-controller="Cadastros" asp-action="Pacientes" class="btn btnForm btn-sm btn-outline-info">
+                            Cancelar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                    
+                
+            </form>
+        </div>
+
+</div>
+    </body>
+</html>
+

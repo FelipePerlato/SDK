@@ -1,0 +1,61 @@
+@model IEnumerable<SistemaConsultas.Models.Agenda>
+<div class="container p-5">
+    <div class="border border-light rounded p-5 formularios">
+        <table class="table table-striped table-hover table-sm">
+            <thead>
+                <tr class="thead-light">
+                    <th>
+                        
+                    </th>
+                    <th>
+                        Nome
+                    </th>
+                    <th>
+                        Hora
+                    </th>
+                    <th>
+                        Ações
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <a asp-area="" asp-controller="Agenda" asp-action="Agendamentos" class="btn-sm btn-outline-primary rounded-circle">
+                                    <i class=" fa fa-pencil-square-o"></i>
+                </a>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.paciente)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.hora)
+                        </td>
+                        <td>
+                            <div class="row">
+                               
+                                <form>
+                                    <button asp-controller="Agenda" asp-action="Atender" asp-route-paciente="@item.id" title="Atender" class="btn btn-sm btn-outline-primary rounded-circle">
+                                        <i class="fa fa-solid fa-check"></i>
+
+                                    </button>
+                                    <button type="submit" title="Faltou" class="btn btn-sm btn-outline-danger rounded-circle">
+                                        <i class="fa fa-solid fa-xmark"></i>
+
+                                    </button>
+                                </form>
+                                
+                                
+
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>
